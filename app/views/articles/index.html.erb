@@ -1,6 +1,15 @@
 <h1>Articles index</h1>
 
 
+<h1>In list</h1>
+<ul>
+    <% @articles.each do |x| %>
+        <li><%= x.title %></li>
+    <% end %>
+</ul>
+
+
+<h1>In table</h1>
 <table>
     <thead>
         <tr>
@@ -19,3 +28,5 @@
         <% end %>
     </tbody>
 </table>
+
+
