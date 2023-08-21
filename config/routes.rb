@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   get 'contact', to: 'pages#contact'
 
-  resources :articles, only: [:show, :index, :new, :create]
+  resources :articles, only: [:show, :index, :new, :create, :edit, :update]
 
 end
