@@ -1,34 +1,23 @@
 <h1>Articles index</h1>
 
-
-<h1>In list</h1>
-<ul>
-    <% @articles.each do |x| %>
-        <li><%= x.title %></li>
-    <% end %>
-</ul>
+<%= link_to 'Create article', new_article_path, class: "btn btn-primary" %>
+<br>
+<br>
 
 
-<h1>In table</h1>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @articles.each do |a| %>
-            <tr>
-                <td><%= a.id %></td>
-                <td><%= a.title %></td>
-                <td><%= a.description %></td>
-                <td>Placeholder</td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
-
-
+<div class="row row-cols-3 row-cols-md-4 g-4">
+  <% @articles.each do |a| %>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= a.title %></h5>
+          <p class="card-text"><%= a.description %></p>
+          <p class="card-text"><%= a.created_at %></p>
+          <%= link_to 'Show', article_path(a), class: "btn btn-primary" %>
+          <%= link_to 'Edit', edit_article_path(a), class: "btn btn-warning" %>
+          <%= link_to "Delete", article_path(a), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

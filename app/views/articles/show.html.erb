@@ -4,3 +4,7 @@
 <p><strong>Title: </strong><%= @article.title %></p>
 <p><strong>Description: </strong><%= @article.description %></p>
 
+<%= link_to 'Go to homepage', articles_path %>
+<br>
+<%= link_to 'Edit article', edit_article_path %>
+<%= link_to 'Delete article', @article , data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
