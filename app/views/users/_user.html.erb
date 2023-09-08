@@ -1,0 +1,16 @@
+<div class="row row-cols-3 row-cols-md-4 g-4">
+  <% @users.each do |user| %>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= user.username %></h5>
+          <p class="card-text"><%= user.email %></p>
+          <p class="card-text"><%= pluralize(user.articles.count, "article" ) %></p>
+          <p class="card-text">Joined <%= time_ago_in_words(user.created_at) %> ago</p>
+          <%= link_to 'View profile', user_path(user), class: "btn btn-primary" %>
+          <%= link_to 'Edit profile', edit_user_path(user), class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
