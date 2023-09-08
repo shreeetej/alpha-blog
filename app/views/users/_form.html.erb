@@ -1,0 +1,25 @@
+<%= render 'shared/errors', obj: @user %>
+
+<%= form_with model: @user, data: {turbo: false} do |f| %>
+    <div class="col-3">
+        <%= f.label :username, class:"form-label" %> <br>
+    </div>
+    <div class="col-3">
+        <%= f.text_field :username, class:"form-control" %> <br> <br>
+    </div>
+    <div class="col-3">
+        <%= f.label :email, class:"form-label" %> <br>
+    </div>
+    <div class="col-3">
+        <%= f.email_field :email, class:"form-control" %> <br> <br>
+    </div>
+    <div class="col-3">
+        <%= f.label :password, class:"form-label" %> <br>
+    </div>
+    <div class="col-3">
+        <%= f.password_field :password, class:"form-control" %> <br> <br>
+    </div>
+    <div class="col-3">
+        <%= f.submit "Sign up", class: "btn btn-primary" %>
+    </div>
+<% end %>
