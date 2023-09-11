@@ -1,4 +1,6 @@
 <h2><%= @user.username %>'s Profile</h2> <br>
 <%= gravatar_for @user , size: 200 %> <br>
 <%= @user.email %> <br> <br>
+<%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-warning" %>
+<%= paginate @articles %>
 <%= render 'articles/article' %>

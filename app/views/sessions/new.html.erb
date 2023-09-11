@@ -1,0 +1,17 @@
+<%= form_with scope: :session, url: login_path, data: {turbo: false} do |f| %>
+    <div class="col-3">
+        <%= f.label :email, class:"form-label" %> <br>
+    </div>
+    <div class="col-3">
+        <%= f.email_field :email, class:"form-control", placeholder: "Enter your email" %> <br> <br>
+    </div>
+    <div class="col-3">
+        <%= f.label :password, class:"form-label" %> <br>
+    </div>
+    <div class="col-3">
+        <%= f.password_field :password, class:"form-control", placeholder: "Enter your password" %> <br> <br>
+    </div>
+    <div class="col-3">
+        <%= f.submit "Log in" , class: "btn btn-primary" %>
+    </div>
+<% end %>

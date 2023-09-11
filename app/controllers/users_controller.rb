@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @articles = @user.articles
+    @articles = @user.articles.order(:title).page params[:page]
   end
 
   def index
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "Welcome #{@user.username} to Alpha Blog"
       redirect_to articles_path
     else
@@ -28,9 +29,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user = User.update(user_params) && @user.password?
-      redirect_to articles_path
+    if @user.update(user_params)
       flash[:notice] = "Updated your profile successfully"
+      redirect_to @user
     else
       render 'edit'
     end
