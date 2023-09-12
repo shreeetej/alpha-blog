@@ -259,6 +259,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   pg
+  popper_js
   puma (~> 5.0)
   rails (~> 7.0.6)
   selenium-webdriver

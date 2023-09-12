@@ -1,6 +1,9 @@
 <h2><%= @user.username %>'s Profile</h2> <br>
 <%= gravatar_for @user , size: 200 %> <br>
 <%= @user.email %> <br> <br>
-<%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-warning" %>
+<% if logged_in? && @user == current_user %>
+  <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-warning" %>
+  <%= link_to 'Delete profile', @user, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},class: "btn btn-danger" %>
+<% end %>
 <%= paginate @articles %>
 <%= render 'articles/article' %>

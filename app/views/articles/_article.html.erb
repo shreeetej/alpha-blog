@@ -6,10 +6,12 @@
           <h5 class="card-title"><%= a.title %></h5>
           <p class="card-text"><%= a.description %></p>
           <p class="card-text">Author: <%= a.user.username if a.user %></p>
-          <small class="card-text">Created: <%= time_ago_in_words(a.created_at) %></small>
           <%= link_to 'Show', article_path(a), class: "btn btn-primary" %>
-          <%= link_to 'Edit', edit_article_path(a), class: "btn btn-warning" %>
-          <%= link_to "Delete", article_path(a), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+          <% if logged_in? && (a.user == current_user || current_user.admin? ) %>
+            <%= link_to 'Edit', edit_article_path(a), class: "btn btn-warning" %>
+            <%= link_to "Delete", article_path(a), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+          <% end %> <br> <br>
+          <small class="card-text">Created: <%= time_ago_in_words(a.created_at) %> ago ; Edited: <%= time_ago_in_words(a.updated_at) %> ago</small>
         </div>
       </div>
     </div>

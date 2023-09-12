@@ -7,5 +7,8 @@
 
 <%= link_to 'Go to homepage', articles_path %>
 <br>
-<%= link_to 'Edit article', edit_article_path %>
-<%= link_to 'Delete article', @article , data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+<% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+  <%= link_to 'Edit', edit_article_path, class: "btn btn-warning" %>
+  <%= link_to "Delete", @article, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+<% end %>
