@@ -13,6 +13,9 @@
           <%= link_to 'Bloggers', users_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
+          <%= link_to 'Categories', categories_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= link_to 'Articles', articles_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
@@ -41,6 +44,10 @@
       <ul class="dropdown-menu" style="ul > a{margin:10px 0px}">
         <%= link_to 'View profile', user_path(current_user), class: "btn btn-warning", style: "margin: 10px 5px" %>
         <%= link_to 'Edit profile', edit_user_path(current_user), class: "btn btn-warning", style: "margin: 10px 5px" %>
+        <% if current_user.admin? %>
+          <%= link_to 'View categories', categories_path, class: "btn btn-warning", style: "margin: 10px 5px" %>
+          <%= link_to 'Create new category', new_category_path, class: "btn btn-warning", style: "margin: 10px 5px" %>
+        <% end %>
       </ul>
     </div>
   <% end %>

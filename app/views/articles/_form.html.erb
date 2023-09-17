@@ -14,6 +14,12 @@
         <%= f.text_area :description, class:"form-control" %> <br> <br>
     </div>
     <div class="col-3">
+        <%= f.label :category, class:"form-label" %> <br>
+    </div>
+    <div class="col-3 ">
+        <%= f.collection_select :category_ids, Category.all, :id, :name , {prompt: "Select category (optional)"} , {class: 'form-select', multiple: true} %> <br> <br>
+    </div>
+    <div class="col-3">
         <%= f.submit class: "btn btn-primary" %>
     </div>
 <% end %>

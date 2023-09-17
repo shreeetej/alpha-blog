@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <h3>There are some errors</h3>
+        <h4 class="alert-heading">There are some errors</h3>
         <ul>
             <% obj.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
