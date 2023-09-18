@@ -5,8 +5,10 @@
         <div class="card-body">
           <h5 class="card-title"><%= a.name %></h5>
           <%= link_to 'Show', category_path(a), class: "btn btn-primary" %>
-          <%= link_to 'Edit', edit_category_path(a), class: "btn btn-warning" %>
-          <%= link_to "Delete", category_path(a), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+          <% if logged_in? && current_user.admin? %>
+            <%= link_to 'Edit', edit_category_path(a), class: "btn btn-warning" %>
+            <%# <%= link_to "Delete", category_path(a), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
